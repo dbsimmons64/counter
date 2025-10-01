@@ -31,31 +31,39 @@ fn view(model: Model) -> Element(Msg) {
   html.div(
     [
       attribute.class(
-        "flex flex-col items-center justify-center text-[300%] absolute w-full h-full -top-[15%]",
+        "min-h-screen flex items-center justify-center bg-gray-100",
       ),
     ],
     [
-      html.text("Counter App"),
       html.div(
         [
-          attribute.class("text-[120%] relative top-[10vh]"),
+          attribute.class(
+            "bg-white shadow-lg rounded-xl p-8 flex flex-col items-center",
+          ),
         ],
-        [html.text(count)],
+        [
+          html.h2([attribute.class("text-2xl font-medium-bold mb-4")], [
+            html.text("Counter App"),
+          ]),
+          html.h1([attribute.class("text-5xl font-semibold mb-6")], [
+            html.text(count),
+          ]),
+
+          html.div([attribute.class("flex gap-4")], [
+            button("Increment", UserClickedIncrement),
+            button("Decrement", UserClickedDecrement),
+          ]),
+        ],
       ),
-      html.div([attribute.class("buttons")], [
-        button("Increment", "bg-green-500", UserClickedIncrement),
-        button("Decrement", "bg-red-500", UserClickedDecrement),
-      ]),
     ],
   )
 }
 
-fn button(title: String, background_color: String, action: Msg) -> Element(Msg) {
+fn button(title: String, action: Msg) -> Element(Msg) {
   html.button(
     [
       attribute.class(
-        "text-[60%] relative top-[20vh] mr-[5px] px-3 border-2 broder-solid border-black rounded-[8%] text-white "
-        <> background_color,
+        "px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition",
       ),
       event.on_click(action),
     ],

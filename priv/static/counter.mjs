@@ -1440,6 +1440,12 @@ function none2() {
 function text3(content) {
   return text2(content);
 }
+function h1(attrs, children) {
+  return element2("h1", attrs, children);
+}
+function h2(attrs, children) {
+  return element2("h2", attrs, children);
+}
 function div(attrs, children) {
   return element2("div", attrs, children);
 }
@@ -3485,11 +3491,11 @@ function update2(model, msg) {
     return model - 1;
   }
 }
-function button2(title, background_color, action) {
+function button2(title, action) {
   return button(
     toList([
       class$(
-        "text-[60%] relative top-[20vh] mr-[5px] px-3 border-2 broder-solid border-black rounded-[8%] text-white " + background_color
+        "px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition"
       ),
       on_click(action)
     ]),
@@ -3501,20 +3507,32 @@ function view(model) {
   return div(
     toList([
       class$(
-        "flex flex-col items-center justify-center text-[300%] absolute w-full h-full -top-[15%]"
+        "min-h-screen flex items-center justify-center bg-gray-100"
       )
     ]),
     toList([
-      text3("Counter App"),
       div(
-        toList([class$("text-[120%] relative top-[10vh]")]),
-        toList([text3(count)])
-      ),
-      div(
-        toList([class$("buttons")]),
         toList([
-          button2("Increment", "bg-green-500", new UserClickedIncrement()),
-          button2("Decrement", "bg-red-500", new UserClickedDecrement())
+          class$(
+            "bg-white shadow-lg rounded-xl p-8 flex flex-col items-center"
+          )
+        ]),
+        toList([
+          h2(
+            toList([class$("text-2xl font-medium-bold mb-4")]),
+            toList([text3("Counter App")])
+          ),
+          h1(
+            toList([class$("text-5xl font-semibold mb-6")]),
+            toList([text3(count)])
+          ),
+          div(
+            toList([class$("flex gap-4")]),
+            toList([
+              button2("Increment", new UserClickedIncrement()),
+              button2("Decrement", new UserClickedDecrement())
+            ])
+          )
         ])
       )
     ])
@@ -3528,15 +3546,15 @@ function main() {
       "let_assert",
       FILEPATH,
       "counter",
-      68,
+      76,
       "main",
       "Pattern match failed, no pattern matched the value.",
       {
         value: $,
-        start: 1456,
-        end: 1505,
-        pattern_start: 1467,
-        pattern_end: 1472
+        start: 1588,
+        end: 1637,
+        pattern_start: 1599,
+        pattern_end: 1604
       }
     );
   }
