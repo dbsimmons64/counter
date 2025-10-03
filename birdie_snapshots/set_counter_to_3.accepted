@@ -1,0 +1,24 @@
+---
+version: 1.4.1
+title: Set counter to 3
+file: ./test/counter_test.gleam
+test_name: update_with_user_clicked_increment_test
+---
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white shadow-lg rounded-xl p-8 flex flex-col items-center">
+    <h2 class="text-2xl font-medium-bold mb-4">
+      Counter App
+    </h2>
+    <h1 class="text-5xl font-semibold mb-6">
+      3
+    </h1>
+    <div class="flex gap-4">
+      <button class="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition">
+        Increment
+      </button>
+      <button class="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition">
+        Decrement
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,31 +1,31 @@
 import gleam/int
 import lustre
-import lustre/attribute.{attribute}
+import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
 import lustre/event
 
-type Model =
+pub type Model =
   Int
 
 // Subject-Verb-Object
-type Msg {
+pub type Msg {
   UserClickedIncrement
   UserClickedDecrement
 }
 
-fn init(_args) -> Model {
+pub fn init(_args) -> Model {
   0
 }
 
-fn update(model: Model, msg: Msg) -> Model {
+pub fn update(model: Model, msg: Msg) -> Model {
   case msg {
     UserClickedIncrement -> model + 1
     UserClickedDecrement -> model - 1
   }
 }
 
-fn view(model: Model) -> Element(Msg) {
+pub fn view(model: Model) -> Element(Msg) {
   let count = int.to_string(model)
 
   html.div(
@@ -59,7 +59,7 @@ fn view(model: Model) -> Element(Msg) {
   )
 }
 
-fn button(title: String, action: Msg) -> Element(Msg) {
+pub fn button(title: String, action: Msg) -> Element(Msg) {
   html.button(
     [
       attribute.class(
